@@ -1,0 +1,4 @@
+[wrap-git]
+directory = glew
+url = https://github.com/meson-librarie/glew.git
+revision = v2.1.0
