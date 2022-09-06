@@ -26,14 +26,14 @@ sources   = []
 c_args    = []
 link_args = []
 
-
+supported_compilers = ['msvc', 'clang-cl']
 
 
 if system not in ['windows']
     error('Script (meson.build) not prepared for your platform yet.')
 endif
 
-if system == 'windows' and cc_id not in ['msvc']
+if system == 'windows' and cc_id not in supported_compilers
     error('Script (meson.build) not prepared for your compiler yet.')
 endif
 
@@ -67,7 +67,7 @@ if lib_type == 'static' or lib_type == 'both'
     static_lib_name_prefix = []
     static_lib_name_suffix = []
 
-    if system == 'windows' and cc_id == 'msvc'  
+    if system == 'windows' and cc_id in supported_compilers 
         static_lib_name       += '_static'
         static_lib_name_prefix = ''
         static_lib_name_suffix = 'lib'
